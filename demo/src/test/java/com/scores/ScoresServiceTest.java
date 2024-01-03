@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -36,5 +37,23 @@ public class ScoresServiceTest {
 		// 调用 calculateAverage 方法计算平均值
 		double average = scoresService.calAvg(studentList);
 		Assertions.assertNotSame(Double.NaN, average);
+	}
+
+	@Test
+	public void testPassRate(String classId) {
+		List<Student> studentList = scoresService.getStudents(classId);
+
+		double passRate = scoresService.passRate(studentList);
+		// 及格率应为 60%
+		Assertions.assertNotSame(Double.NaN, passRate);
+	}
+
+	@Test
+	public void testExcellenceRate(String classId) {
+		List<Student> studentList = scoresService.getStudents(classId);
+
+		double excelRate = scoresService.excelRate(studentList);
+		// 及格率应为 60%
+		Assertions.assertNotSame(Double.NaN, excelRate);
 	}
 }
