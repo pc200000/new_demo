@@ -26,4 +26,14 @@ public class ScoresController {
     public Double getAverage(@PathVariable String classId) {
         return scoresService.calAvg(scoresService.getStudents(classId));
     }
+
+    @GetMapping("/students/{classId}/passRate")
+    public Double getPassRate(@PathVariable String classId) {
+        return scoresService.calAvg(scoresService.getStudents(classId));
+    }
+
+    @GetMapping("/students/{classId}/excelRate")
+    public Double getExcellenceRate(@PathVariable String classId) {
+        return scoresService.calAvg(scoresService.getStudents(classId));
+    }
 }

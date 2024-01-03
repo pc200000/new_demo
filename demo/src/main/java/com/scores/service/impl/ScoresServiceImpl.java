@@ -45,6 +45,36 @@ public class ScoresServiceImpl implements ScoresService {
         return sum / students.size();
     }
 
+    @Override
+    public double passRate(List<Student> students) {
+        // 计算及格人数
+        int passCount = 0;
+        for (Student student : students) {
+            if (student.getScore() >= 60) {
+                passCount++;
+            }
+        }
+
+        // 计算及格率
+        double passRate = (double) passCount / students.size();
+        return passRate * 100;
+    }
+
+    @Override
+    public double excelRate(List<Student> students) {
+        // 计算优秀人数
+        int excellenceCount = 0;
+        for (Student student : students) {
+            if (student.getScore() >= 90) {
+                excellenceCount++;
+            }
+        }
+
+        // 计算优秀率
+        double excellenceRate = (double) excellenceCount / students.size();
+        return excellenceRate * 100;
+    }
+
     public List<Student> getStudents(String classId) {
         // 调用 MyBatis 查询方法
         return studentMapper.getStudentsByClassId(classId);

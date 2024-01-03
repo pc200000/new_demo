@@ -9,5 +9,11 @@ public interface ScoresService {
 
     double calAvg(List<Student> scores);
 
+    double passRate(List<Student> scores);
+
+    double excelRate(List<Student> scores);
+
+
+
     List<Student> getStudents(String classId);
 }
